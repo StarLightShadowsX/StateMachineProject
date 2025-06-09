@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+
+#if ULT_EVENTS
 using EVENT = UltEvents.UltEvent;
+#else
+using EVENT = UnityEngine.Events.UnityEvent;
+#endif
 
 namespace SLS.StateMachineH.V5
 {
     [RequireComponent(typeof(StateMachine))]
     public class SignalManager : StateBehavior
     {
-        public SignalSet globalSignals;
+        public SignalSet globalSignals = new();
 
         public EVENT this[string name] => globalSignals[name];
 
@@ -17,7 +22,7 @@ namespace SLS.StateMachineH.V5
             if(Machine.CurrentState.TryGetComponent(out SignalNode signalNode) && signalNode.FireSignal(name)) return true;
             else if (globalSignals.ContainsKey(name))
             {
-                globalSignals[name]?.InvokeSafe();
+                globalSignals[name]?.Invoke();
                 return true;
             }
             return false;

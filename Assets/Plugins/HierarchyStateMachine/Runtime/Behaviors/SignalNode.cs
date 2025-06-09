@@ -1,7 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+
+#if ULT_EVENTS
 using EVENT = UltEvents.UltEvent;
+#else
+using EVENT = UnityEngine.Events.UnityEvent;
+#endif
+
 
 namespace SLS.StateMachineH.V5
 {
@@ -16,12 +20,10 @@ namespace SLS.StateMachineH.V5
         {
             if (signals.ContainsKey(signalName))
             {
-                signals[signalName]?.InvokeSafe();
+                signals[signalName]?.Invoke();
                 return true;
             }
             else return false;
         }
     }
-
-    public class SignalSet : Dictionary<string, EVENT> { }
 }

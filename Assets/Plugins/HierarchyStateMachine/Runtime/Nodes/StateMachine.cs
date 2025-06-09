@@ -1,7 +1,5 @@
-using EditorAttributes;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -55,7 +53,7 @@ namespace SLS.StateMachineH.V5
         private void Reset()
         {
             Transform tryRoot = transform.Find("States");
-            if (tryRoot != null) this.NewGameObject("States", parent: transform);
+            //if (tryRoot != null) this.NewGameObject("States", parent: transform);
         }
 
         public void Setup(StateMachine machine, IStateGroup parent, int layer, bool makeDirty = false)
@@ -91,7 +89,7 @@ namespace SLS.StateMachineH.V5
         }
 
 #if UNITY_EDITOR
-        [Button]
+        
         public void ManualSetup()
         {
             if (StatesSetup)
