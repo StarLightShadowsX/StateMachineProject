@@ -12,18 +12,29 @@ namespace SLS.StateMachineH.V5
     [RequireComponent(typeof(IStateChild))]
     public class SignalNode : StateBehavior
     {
-        public SignalSet signals;
+        public SignalSet signals = new();
+        [SerializeField] private bool lockOnEnter = false;
+
+        public bool Locked { get; private set; }
 
         public EVENT this[string name] => signals[name];
 
-        public bool FireSignal(string signalName)
+        public bool FireSignal(Signal signal)
         {
-            if (signals.ContainsKey(signalName))
+            if (signals.ContainsKey(signal.name) && (!Locked || signal.ignoreLock))
             {
-                signals[signalName]?.Invoke();
+                signals[signal.name]?.Invoke();
                 return true;
             }
             else return false;
+        }
+
+        public void Unlock() => Locked = false;
+        public void Lock() => Locked = true;
+
+        public override void OnEnter(IStateNode prev, bool isFinal)
+        {
+            if (lockOnEnter) Locked = true;
         }
     }
 }

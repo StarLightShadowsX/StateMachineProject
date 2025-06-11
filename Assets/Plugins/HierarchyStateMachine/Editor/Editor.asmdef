@@ -1,5 +1,5 @@
 {
-    "name": "Editor",
+    "name": "SLS.StateMachineH.V5.Editor",
     "rootNamespace": "",
     "references": [
         "GUID:0d6b463119833254395b9c3bad3b8755"
