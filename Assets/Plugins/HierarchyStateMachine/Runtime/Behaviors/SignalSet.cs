@@ -9,9 +9,9 @@ using EVENT = UltEvents.UltEvent;
 using EVENT = UnityEngine.Events.UnityEvent;
 #endif
 
-using SLS.StateMachineH.V5.SerializedDictionary;
+using SLS.StateMachineH.SerializedDictionary;
 
-namespace SLS.StateMachineH.V5
+namespace SLS.StateMachineH
 {
     [Serializable]
     public class SignalSet : SerializedDictionary<string, EVENT> { }

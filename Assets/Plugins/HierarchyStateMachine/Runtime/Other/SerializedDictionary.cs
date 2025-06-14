@@ -3,7 +3,7 @@ using System.Collections;
 using Generics = System.Collections.Generic;
 using UnityEngine;
 
-namespace SLS.StateMachineH.V5.SerializedDictionary
+namespace SLS.StateMachineH.SerializedDictionary
 {
     [Serializable]
     public class SerializedDictionary<TKey, TValue> : Generics.Dictionary<TKey, TValue>, ISerializationCallbackReceiver, ISerializedDictionaryNonGeneric

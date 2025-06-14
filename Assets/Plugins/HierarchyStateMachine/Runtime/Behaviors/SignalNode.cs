@@ -7,9 +7,9 @@ using EVENT = UnityEngine.Events.UnityEvent;
 #endif
 
 
-namespace SLS.StateMachineH.V5
+namespace SLS.StateMachineH
 {
-    [RequireComponent(typeof(IStateChild))]
+    [RequireComponent(typeof(State))]
     public class SignalNode : StateBehavior
     {
         public SignalSet signals = new();
@@ -32,7 +32,7 @@ namespace SLS.StateMachineH.V5
         public void Unlock() => Locked = false;
         public void Lock() => Locked = true;
 
-        public override void OnEnter(IStateNode prev, bool isFinal)
+        public override void OnEnter(State prev, bool isFinal)
         {
             if (lockOnEnter) Locked = true;
         }

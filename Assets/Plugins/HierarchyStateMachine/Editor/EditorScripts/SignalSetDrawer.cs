@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace SLS.StateMachineH.V5.SerializedDictionary
+namespace SLS.StateMachineH.SerializedDictionary
 {
     [CustomPropertyDrawer(typeof(SignalSet), true)]
     public class SignalSetDrawer : SerializedDictionaryDrawer

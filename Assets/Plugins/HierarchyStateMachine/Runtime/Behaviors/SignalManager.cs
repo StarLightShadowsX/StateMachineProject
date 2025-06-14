@@ -8,7 +8,7 @@ using EVENT = UltEvents.UltEvent;
 using EVENT = UnityEngine.Events.UnityEvent;
 #endif
 
-namespace SLS.StateMachineH.V5
+namespace SLS.StateMachineH
 {
     [RequireComponent(typeof(StateMachine))]
     public class SignalManager : StateBehavior

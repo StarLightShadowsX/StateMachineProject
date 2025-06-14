@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace SLS.StateMachineH.V5
+namespace SLS.StateMachineH
 {
     [CustomEditor(typeof(SignalManager))]
     public class SignalManagerEditor : Editor
@@ -19,10 +19,7 @@ namespace SLS.StateMachineH.V5
             Rect totalArea = EditorGUILayout.GetControlRect();
             GUIStyle skin = GUI.skin.label;
 
-            // The uneditable "Script" field is recreated using the following method:  
-            GUI.enabled = false;
-            EditorGUI.ObjectField(totalArea, "Script", MonoScript.FromMonoBehaviour((SignalManager)target), typeof(SignalManager), false);
-            GUI.enabled = true;
+            EditorUtilities.DrawScriptClicker<SignalManager>(signalManager, totalArea);
 
             Rect globalSignalsArea = totalArea;
             globalSignalsArea.y += EditorGUIUtility.singleLineHeight + 4;
@@ -40,7 +37,9 @@ namespace SLS.StateMachineH.V5
                 Queue<Signal> signalQueue = signalManager.SignalQueue;
                 float signalQueueTimer = signalManager.SignalQueueTimer;
                 float activeSignalLength = signalManager.ActiveSignalLength;
-                if (false) // Debug.  
+
+
+#if DEBUG_1
                 {
                     signalQueue = new();
                     signalQueue.Enqueue(new Signal("Signal1", 1f));
@@ -49,6 +48,7 @@ namespace SLS.StateMachineH.V5
                     signalQueueTimer = 0.45f;
                     activeSignalLength = 1f;
                 }
+#endif
 
                 signalQueueArea.height = 5 + EditorGUIUtility.singleLineHeight * (signalQueue.Count + 1);
                 GUI.Box(signalQueueArea, GUIContent.none, EditorStyles.helpBox);

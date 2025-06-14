@@ -4,7 +4,7 @@ using UnityEditorInternal;
 using UnityEngine;
 using Generics = System.Collections.Generic;
 
-namespace SLS.StateMachineH.V5.SerializedDictionary
+namespace SLS.StateMachineH.SerializedDictionary
 {
     [CustomPropertyDrawer(typeof(SerializedDictionary<,>), true)]
     public class SerializedDictionaryDrawer : PropertyDrawer

@@ -1,5 +1,5 @@
 {
-    "name": "SLS.StateMachineH.V5.Runtime",
+    "name": "SLS.StateMachineH.Runtime",
     "rootNamespace": "",
     "references": [
         "GUID:57a6d82589ae03c4cabdc058f719f231"
